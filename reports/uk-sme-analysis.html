@@ -96,7 +96,7 @@ tr:hover td { background: #f8f9fa; }
   <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
     <span class="tag nb">Feb 2026 Full Month</span>
     <span class="tag nb">Mar 2026 MTD (1–24)</span>
-    <span class="tag warn">⚠ CEO Priority — Action Required</span>
+    <span class="tag warn">⚠ Priority — Action Required</span>
     <a href="https://www.notion.so/32e57ba3e0ba815cad42f285b7552f25" target="_blank" class="hs-link">📄 GTM Command Center ↗</a>
   </div>
 </div>
@@ -105,12 +105,13 @@ tr:hover td { background: #f8f9fa; }
 <div id="tldr" class="tldr section">
   <h2>30-Second Read</h2>
   <p>
-    UK SME NB MRR is <strong>down −73% YoY in Feb 2026</strong> (€610 vs ~€2,260 Feb 2025) and −40% in Jan.
-    Root cause is not demo volume — UK has <strong>16–18 demos scheduled per month</strong> — it is conversion:
-    <strong>14% win rate</strong> in Feb (2 CW vs 12 CL). 50% of losses are "No Decision / Non-Responsive" and 33% "Stayed with Provider."
-    Structural problem: Kirsty Freely covers <strong>UK + International</strong> — territory dilution splits capacity, pipeline is bloated to 103 deals with most stale.
-    March is improving (2 CW, 33% WR, €1,077 MRR) but from a very low base.
-    <strong>Three actions required:</strong> (1) Focus Kirsty on UK only. (2) Build a UK company target list in HubSpot. (3) Fix demo-to-close conversion by tightening qualification at DR stage.
+    UK SME NB MRR is <strong>down significantly YoY</strong>: Feb 2026 = €610 vs Feb 2025 = €4,717 (HubSpot verified).
+    <strong>Important context:</strong> Feb 2025 was heavily inflated by one large multi-location deal — Newton Clarke Veterinary Surgeons (€2,739 MRR, 8-month sales cycle). Normalised Feb 2025 ex-Newton Clarke = €1,978 → Feb 2026 decline = −69%.
+    The structural problem is conversion: <strong>14% win rate in Feb</strong> (2 CW vs 12 CL) — 50% of losses "No Decision," 33% "Stayed with Provider."
+    No large (€1,000+ MRR) multi-location deals in 2026 pipeline vs 2 such deals closed in 2025 (Newton Clarke + Westover/Caistor Vets €3,818).
+    Kirsty Freely covers <strong>UK + International</strong> — territory dilution splits capacity, pipeline bloated to 103 deals.
+    March: 2 CW, 22% WR, €1,077 MRR — improving but from a low base.
+    <strong>Three actions required:</strong> (1) Focus Kirsty on UK only. (2) Build a UK target list in HubSpot. (3) Fix qualification gate before demos.
   </p>
 </div>
 
@@ -120,43 +121,61 @@ tr:hover td { background: #f8f9fa; }
 
   <!-- YoY alert -->
   <div class="alert red" style="margin-bottom:16px;">
-    <strong>⚠ CEO flagged: UK SME down −40% Jan YoY and −73% Feb YoY.</strong>
-    Feb 2025 UK NB MRR estimated at ~€2,260. Feb 2026 = €610. The collapse accelerated MoM through Q1 2026.
+    <strong>⚠ UK SME NB MRR down significantly YoY.</strong>
+    Feb 2025 = €4,717 total NB MRR (HubSpot verified) — but €2,739 came from one large deal (Newton Clarke Vet Surgeons).
+    Normalised Feb 2025 ex-outlier = €1,978. Feb 2026 = €610. Jan 2026 = €1,027 (−40% YoY stated).
+    Not a single collapse — a pattern of smaller deals replacing occasional large multi-location wins.
   </div>
 
-  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:12px;">
-    <div class="kpi">
+  <!-- Row 1: Mar 2026 MTD -->
+  <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--blue-dark); margin-bottom:6px; padding-left:2px;">March 2026 MTD (1–24)</div>
+  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:4px;">
+    <div class="kpi" style="border-top:3px solid var(--blue);">
+      <div class="label">Total MRR — Mar MTD</div>
+      <div class="value" style="color:var(--yellow);">€1,077</div>
+      <div class="sub">NB only · Upsell = €0 this month</div>
+      <div class="delta up">↑ +76% vs Feb total (€990)</div>
+    </div>
+    <div class="kpi" style="border-top:3px solid var(--blue);">
       <div class="label">NB MRR — Mar MTD</div>
       <div class="value" style="color:var(--yellow);">€1,077</div>
-      <div class="sub">Kirsty · UK + Intl mixed</div>
-      <div class="delta up">↑ +76% vs Feb (€610)</div>
+      <div class="sub">2 CW · Scope Farm €1,007 + Claudia Pook €70</div>
+      <div class="delta up">↑ +76% vs Feb NB (€610)</div>
+    </div>
+    <div class="kpi" style="border-top:3px solid var(--blue);">
+      <div class="label">Upsell MRR — Mar MTD</div>
+      <div class="value" style="color:var(--grey);">€0</div>
+      <div class="sub">2 upsell CW · both €0 (integrations)</div>
+      <div class="delta flat">vs €380 in Feb</div>
+    </div>
+    <div class="kpi" style="border-top:3px solid var(--blue);">
+      <div class="label">Win Rate — Mar MTD</div>
+      <div class="value" style="color:var(--yellow);">22%</div>
+      <div class="sub">2 CW · 7 CL · 10 DD</div>
+      <div class="delta up">↑ vs Feb 14.3%</div>
+    </div>
+  </div>
+
+  <!-- Row 2: Feb 2026 -->
+  <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:6px; margin-top:14px; padding-left:2px;">February 2026 — Full Month</div>
+  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:20px;">
+    <div class="kpi">
+      <div class="label">Total MRR — Feb</div>
+      <div class="value" style="color:var(--red);">€990</div>
+      <div class="sub">€610 NB + €380 Upsell · 6 CW total</div>
+      <div class="delta down">↓ Low base month</div>
     </div>
     <div class="kpi">
-      <div class="label">NB MRR — Feb 2026</div>
+      <div class="label">NB MRR — Feb</div>
       <div class="value" style="color:var(--red);">€610</div>
-      <div class="sub">UK territory only</div>
-      <div class="delta down">↓ −73% vs Feb 2025 (~€2,260)</div>
+      <div class="sub">2 NB CW · UK territory</div>
+      <div class="delta down">↓ vs Feb 2025 €4,717 (incl. €2,739 outlier)</div>
     </div>
     <div class="kpi">
-      <div class="label">Win Rate — Feb 2026</div>
+      <div class="label">Win Rate — Feb</div>
       <div class="value" style="color:var(--red);">14.3%</div>
       <div class="sub">2 CW · 12 CL · from demo</div>
       <div class="delta down">↓ Team avg: 28.4%</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Win Rate — Mar MTD</div>
-      <div class="value" style="color:var(--yellow);">33.3%</div>
-      <div class="sub">2 CW · 4 CL · 15 DD</div>
-      <div class="delta up">↑ Recovering from Feb low</div>
-    </div>
-  </div>
-
-  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:20px;">
-    <div class="kpi">
-      <div class="label">Total MRR — Feb (incl Upsell)</div>
-      <div class="value">€990</div>
-      <div class="sub">€610 NB + €380 Upsell</div>
-      <div class="delta flat">6 CW deals total (2 NB + 4 upsell)</div>
     </div>
     <div class="kpi">
       <div class="label">ARPA NB — Feb</div>
@@ -164,53 +183,71 @@ tr:hover td { background: #f8f9fa; }
       <div class="sub">vs €438 team avg</div>
       <div class="delta down">↓ −30% below team average</div>
     </div>
-    <div class="kpi">
-      <div class="label">ARPA NB — Mar MTD</div>
-      <div class="value">€539</div>
-      <div class="sub">€1,077 / 2 CW</div>
-      <div class="delta up">↑ Deal quality improving</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Open Pipeline (Kirsty)</div>
-      <div class="value">€102k</div>
-      <div class="sub">103 deals · UK + Intl mixed</div>
-      <div class="delta down">91 earlier-stage (likely stale)</div>
-    </div>
   </div>
 
   <!-- Trend table -->
-  <div class="section-title" style="font-size:15px; margin-bottom:12px;">Trend vs Prior Periods</div>
+  <div class="section-title" style="font-size:15px; margin-bottom:4px;">Monthly NB MRR Trend — Kirsty Freely (UK + International)</div>
+  <p class="note" style="margin-bottom:12px;">All NB closed-won deals, Kirsty Freely owner ID. Includes some International deals (Kirsty's territory is UK + International mixed). Country-level split requires a separate HubSpot query. ⚠ = month distorted by a large one-off deal.</p>
   <div class="table-wrap">
     <table>
       <thead>
-        <tr><th>Period</th><th>NB CW</th><th>NB MRR</th><th>CL NB</th><th>Win Rate</th><th>ARPA</th><th>vs Prior Year</th><th>Source</th></tr>
+        <tr><th>Month</th><th>NB CW</th><th>NB MRR</th><th>CL NB</th><th>Win Rate</th><th>ARPA</th><th>Note</th></tr>
       </thead>
       <tbody>
         <tr style="background:var(--blue-light);">
-          <td><strong>Mar 2026 MTD</strong></td><td>2</td><td>€1,077</td><td>4</td><td>33.3%</td><td>€539</td><td>—</td><td><span class="badge info">Live</span></td>
+          <td><strong>Mar 2026 MTD</strong></td><td>2</td><td>€1,077</td><td>7</td><td>22%</td><td>€539</td><td><span class="badge info">Live</span></td>
         </tr>
         <tr>
-          <td><strong>Feb 2026</strong></td><td>2</td><td>€610</td><td>12</td><td>14.3%</td><td>€305</td><td class="delta down">−73% YoY</td><td><span class="badge info">Verified</span></td>
+          <td><strong>Feb 2026</strong></td><td>2</td><td>€610</td><td>12</td><td>14.3%</td><td>€305</td><td><span class="badge info">Verified</span></td>
         </tr>
         <tr>
-          <td><strong>Jan 2026</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="delta down">−40% YoY</td><td><span class="badge warn">CEO stated</span></td>
+          <td><strong>Jan 2026</strong></td><td>4</td><td>€1,027</td><td>—</td><td>—</td><td>€257</td><td><span class="badge info">HubSpot</span></td>
         </tr>
-        <tr style="background:#f8f9fa;">
-          <td><strong>Q4 2025 est.</strong></td><td>~8–10</td><td>~€3,000–5,000/mo</td><td>~8–12/mo</td><td>~25–35%</td><td>—</td><td>—</td><td><span class="badge warn">Estimated</span></td>
+        <tr style="background:#fff8e6;">
+          <td><strong>Dec 2025</strong></td><td>4</td><td>€683</td><td>—</td><td>—</td><td>€171</td><td><span class="badge info">HubSpot</span></td>
         </tr>
-        <tr style="background:#f8f9fa;">
-          <td><strong>Q3 2025 est.</strong></td><td>~8–10</td><td>~€3,000–5,000/mo</td><td>—</td><td>~30–40%</td><td>—</td><td>—</td><td><span class="badge warn">Estimated</span></td>
+        <tr style="background:#fff8e6;">
+          <td><strong>Nov 2025</strong></td><td>1</td><td>€110</td><td>—</td><td>—</td><td>€110</td><td><span class="badge info">HubSpot</span></td>
         </tr>
-        <tr style="background:#f8f9fa;">
-          <td><strong>Feb 2025 est.</strong></td><td>~5–7</td><td>~€2,260</td><td>—</td><td>~35–45%</td><td>—</td><td>—</td><td><span class="badge warn">Back-calculated from −73%</span></td>
+        <tr style="background:#fff8e6;">
+          <td><strong>Oct 2025</strong></td><td>3</td><td>€1,333</td><td>—</td><td>—</td><td>€444</td><td><span class="badge info">HubSpot</span> incl. Wynyard Vets (19-month cycle)</td>
         </tr>
-        <tr style="background:#f8f9fa;">
-          <td><strong>Q1 2025 est.</strong></td><td>~15–20</td><td>~€6,000–8,000</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="badge warn">Estimated · needs HubSpot query</span></td>
+        <tr>
+          <td><strong>Sep 2025</strong></td><td>2</td><td>€431</td><td>—</td><td>—</td><td>€216</td><td><span class="badge info">HubSpot</span></td>
+        </tr>
+        <tr>
+          <td><strong>Aug 2025</strong></td><td>4</td><td>€405</td><td>—</td><td>—</td><td>€101</td><td><span class="badge info">HubSpot</span></td>
+        </tr>
+        <tr>
+          <td><strong>Jul 2025</strong></td><td>8</td><td>€2,668</td><td>—</td><td>—</td><td>€334</td><td><span class="badge info">HubSpot</span> Heath Equine €728, British Vet Centre €594</td>
+        </tr>
+        <tr style="background:var(--yellow-light);">
+          <td><strong>Jun 2025</strong></td><td>7</td><td style="color:var(--yellow); font-weight:700;">€4,871 ⚠</td><td>—</td><td>—</td><td>€696</td><td><span class="badge warn">Large deal</span> Westover/Caistor Vets <strong>€3,818</strong> (multi-location, 4-month cycle)</td>
+        </tr>
+        <tr>
+          <td><strong>May 2025</strong></td><td>0</td><td style="color:var(--red);">€0</td><td>—</td><td>—</td><td>—</td><td><span class="badge info">HubSpot</span></td>
+        </tr>
+        <tr>
+          <td><strong>Apr 2025</strong></td><td>2</td><td>€94</td><td>—</td><td>—</td><td>€47</td><td><span class="badge info">HubSpot</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mar 2025</strong></td><td>4</td><td>€662</td><td>—</td><td>—</td><td>€166</td><td><span class="badge info">HubSpot</span></td>
+        </tr>
+        <tr style="background:var(--yellow-light);">
+          <td><strong>Feb 2025</strong></td><td>10</td><td style="color:var(--yellow); font-weight:700;">€4,717 ⚠</td><td>—</td><td>—</td><td>€472</td><td><span class="badge warn">Large deal</span> Newton Clarke Vet Surgeons <strong>€2,739</strong> (multi-location, 8-month cycle)</td>
+        </tr>
+        <tr>
+          <td><strong>Jan 2025</strong></td><td>7</td><td>€1,036</td><td>—</td><td>—</td><td>€148</td><td><span class="badge info">HubSpot</span></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="note" style="margin-top:8px;">⚠ Estimated rows need verification with a HubSpot historical query by market territory. Priority action: pull UK NB MRR by month for full 2025 + Jan 2026.</p>
+  <p class="note" style="margin-top:8px;">Months without ⚠: typical range €400–€1,300 NB MRR. The two outlier months (Feb + Jun 2025) both contained a single large multi-location deal that closed after a multi-month sales cycle. No comparable deal in 2026 pipeline.</p>
+
+  <!-- Large deal analysis -->
+  <div class="highlight-box" style="margin-top:16px;">
+    <strong>⚠ Key insight: large-deal baseline distortion.</strong> In 2025, Kirsty closed 2 deals worth €1,000+ MRR — Newton Clarke Vet Surgeons (€2,739, Feb) and Westover/Caistor Vets (€3,818, Jun). Both were multi-location UK practices with 4–8 month sales cycles. Together they represent <strong>€6,557 MRR</strong> across just 2 months. These are not repeating in 2026: no comparable deal is in priority stage (Buyer Intent or Commitment) in Kirsty's current pipeline. This is the primary driver of the YoY decline beyond the structural territory and conversion issues.
+  </div>
 </div>
 
 <!-- FUNNEL -->
@@ -218,7 +255,7 @@ tr:hover td { background: #f8f9fa; }
   <div class="section-title">🔽 UK Funnel — February 2026 <small>Verified from HubSpot · by-market.csv</small></div>
 
   <div class="highlight-box">
-    <strong>Core finding:</strong> UK has strong top-of-funnel activity (16 DR, 18 DS) but collapses at close. 85% of deal outcomes in Feb were losses. The problem is not lead generation — it is qualification and conversion.
+    <strong>Core finding:</strong> UK shows high DR/DS volume (16 DR, 18 DS in Feb) but collapses at close — 85% of deal outcomes were losses. Note: DR and DS figures may include spam/disqualified contacts (<code>hs_lead_status = Disqualified</code>) — qualified volume is likely lower. The problem is not lead generation — it is qualification and conversion.
   </div>
 
   <div style="display:flex; align-items:center; gap:0; overflow-x:auto; padding-bottom:8px; margin-bottom:20px;">
@@ -407,12 +444,12 @@ tr:hover td { background: #f8f9fa; }
       <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">UK vs International split unknown. Earlier-stage likely contains many stale international deals.</div>
     </div>
     <div class="card">
-      <div class="label">Demos Done — Feb→Mar</div>
-      <div style="font-size:24px; font-weight:800; color:var(--green); margin:8px 0;">3 → 15</div>
-      <div style="font-size:12px; color:var(--green);">+400% DD MoM</div>
+      <div class="label">Demos Done — Mar MTD (unique deals)</div>
+      <div style="font-size:24px; font-weight:800; color:var(--yellow); margin:8px 0;">8 DD</div>
+      <div style="font-size:12px; color:var(--text-muted);">10 contact rows → 8 unique deals · Feb = ~8 DD</div>
       <div class="divider"></div>
-      <div style="font-size:13px;">Positive signal: demo volume ramping in March</div>
-      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">If UK-focused (not international), March could be a genuine inflection point.</div>
+      <div style="font-size:13px;">Stable vs Feb but need to track qualification rate</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">With 7 CL and 2 CW in March, conversion from DD to CW = 22% — above Feb but still below 28% team avg.</div>
     </div>
   </div>
 
@@ -487,7 +524,7 @@ tr:hover td { background: #f8f9fa; }
   <div class="section-title">🚀 Solutions — What Needs to Happen <small>Aligned to CEO / RevOps plan · prioritised by impact</small></div>
 
   <div class="alert blue" style="margin-bottom:20px;">
-    These solutions are directly aligned with Alexander Cram's priorities (focus UK team on UK, build target lists) and Jean Mascre's RevOps plan (upsell list → outbound foundation → target list → lead score → route).
+    These solutions are directly aligned with leadership priorities (focus UK team on UK, build target lists) and the RevOps plan (upsell list → outbound foundation → target list → lead score → route).
   </div>
 
   <!-- Solution 1 -->
@@ -611,7 +648,7 @@ tr:hover td { background: #f8f9fa; }
       <span class="badge info">Strategic</span>
     </div>
     <ul>
-      <li>CEO explicitly stated: UK at minimum on par with US, possibly clear #1 for marketing activities.</li>
+      <li>UK is a stated priority: at minimum on par with US, possibly clear #1 for marketing activities.</li>
       <li>UK inbound leads (17+ in Feb sample) are currently not converting — marketing quality and targeting need review.</li>
       <li>UK-specific: BVNA (British Veterinary Nursing Association) congress, BSAVA congress — presence and sponsorship.</li>
       <li>Content: UK case studies, UK-specific testimonials, NHS/RCVS alignment messaging.</li>
@@ -653,15 +690,15 @@ tr:hover td { background: #f8f9fa; }
 
 <!-- DATA GAPS -->
 <div class="section">
-  <div class="section-title">⚠️ Data Gaps — What We Need from HubSpot</div>
+  <div class="section-title">⚠️ Data Gaps — What We Still Need from HubSpot</div>
   <div class="card">
-    <p style="margin-bottom:12px; color:var(--text-muted); font-size:13px;">The following data is not currently in local files and requires a HubSpot query to be complete:</p>
+    <p style="margin-bottom:12px; color:var(--text-muted); font-size:13px;">Monthly NB MRR trend (full 2025) is now verified from HubSpot. Remaining gaps:</p>
     <table>
       <thead><tr><th>#</th><th>Missing Data</th><th>Why It Matters</th><th>Priority</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>UK NB MRR by month — full 2025 + Jan 2026</td><td>Confirm the exact YoY trend and when the decline started</td><td><span class="badge critical">High</span></td></tr>
-        <tr><td>2</td><td>Kirsty's pipeline: UK vs International company split</td><td>Understand true UK pipeline value vs international noise</td><td><span class="badge critical">High</span></td></tr>
-        <tr><td>3</td><td>Number of UK companies in HubSpot (prospect + customer)</td><td>Size the UK target market vs what's already in CRM</td><td><span class="badge warn">Medium</span></td></tr>
+        <tr><td>1</td><td>Kirsty's pipeline: UK vs International company split (country field)</td><td>Understand true UK pipeline value vs international noise in 103 deals</td><td><span class="badge critical">High</span></td></tr>
+        <tr><td>2</td><td>Feb/Mar DR + DS count excluding <code>hs_lead_status = Disqualified</code></td><td>Verify true qualified funnel volume — current DR/DS may include spam contacts</td><td><span class="badge critical">High</span></td></tr>
+        <tr><td>3</td><td>Large-deal pipeline: are there any multi-location UK deals (€1,000+ MRR) in early stages?</td><td>Determines whether 2026 will repeat 2025 pattern or stay in small-deal range</td><td><span class="badge critical">High</span></td></tr>
         <tr><td>4</td><td>Lupa as a specific lost reason — historical count</td><td>Understand Lupa win rate to prioritise battle card urgency</td><td><span class="badge warn">Medium</span></td></tr>
         <tr><td>5</td><td>UK customer upsell opportunity (ProvetPay / Clinical AI status)</td><td>Quantify upsell TAM for UK before 27/03 delivery</td><td><span class="badge warn">Medium</span></td></tr>
       </tbody>
