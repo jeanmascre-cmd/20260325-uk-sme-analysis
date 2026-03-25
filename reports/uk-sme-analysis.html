@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK SME Analysis — March 2026 | Nordhealth</title>
+<style>
+:root {
+  --blue: #0052CC; --blue-dark: #172B4D; --blue-light: #DEEBFF;
+  --green: #00875A; --green-light: #E3FCEF;
+  --yellow: #FF8B00; --yellow-light: #FFFAE6;
+  --orange: #FF5630; --orange-light: #FFEBE6;
+  --red: #DE350B; --red-light: #FFEBE6;
+  --grey: #6B778C; --border: #DFE1E6; --bg: #F4F5F7; --card: #FFFFFF; --text: #172B4D; --text-muted: #6B778C;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+nav { position: sticky; top: 0; z-index: 100; background: var(--blue-dark); color: #fff; display: flex; align-items: center; gap: 2px; padding: 0 20px; overflow-x: auto; white-space: nowrap; }
+nav a { color: rgba(255,255,255,0.75); text-decoration: none; padding: 12px 14px; font-size: 13px; display: inline-block; border-bottom: 2px solid transparent; }
+nav a:hover { color: #fff; border-bottom-color: #4C9AFF; }
+nav .brand { font-weight: 700; color: #fff; padding: 12px 16px 12px 0; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.2); margin-right: 8px; }
+.page { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+.section { margin-bottom: 40px; }
+.section-title { font-size: 18px; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.section-title small { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+.kpi-grid { display: grid; gap: 12px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+.kpi .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+.kpi .value { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin: 4px 0; }
+.kpi .sub { font-size: 12px; color: var(--text-muted); }
+.kpi .delta { font-size: 12px; font-weight: 600; margin-top: 4px; }
+.delta.up { color: var(--green); } .delta.down { color: var(--red); } .delta.flat { color: var(--grey); }
+.alert { border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; border-left: 4px solid; font-size: 13px; }
+.alert.red { background: var(--red-light); border-color: var(--red); }
+.alert.yellow { background: var(--yellow-light); border-color: var(--yellow); }
+.alert.green { background: var(--green-light); border-color: var(--green); }
+.alert.blue { background: var(--blue-light); border-color: var(--blue); }
+.tldr { background: var(--blue-dark); color: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 24px; }
+.tldr h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 12px; }
+.tldr p { font-size: 15px; line-height: 1.7; opacity: 0.92; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--bg); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--border); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); white-space: nowrap; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8f9fa; }
+.table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; overflow-x: auto; }
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.badge.critical { background: var(--red-light); color: var(--red); }
+.badge.warn { background: var(--yellow-light); color: var(--yellow); }
+.badge.ok { background: var(--green-light); color: var(--green); }
+.badge.info { background: var(--blue-light); color: var(--blue); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+.bar-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 6px 0 3px; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+.tag { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.tag.nb { background: var(--blue-light); color: var(--blue); }
+.tag.warn { background: var(--yellow-light); color: #7A4500; }
+.tag.red { background: var(--red-light); color: var(--red); }
+.hs-link { color: var(--blue); text-decoration: none; font-size: 11px; padding: 2px 6px; border-radius: 3px; background: var(--blue-light); }
+.roadmap-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.roadmap-item .ri-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.roadmap-item .ri-number { width: 28px; height: 28px; border-radius: 50%; background: var(--blue-dark); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
+.roadmap-item .ri-title { font-weight: 700; font-size: 15px; }
+.roadmap-item .ri-owner { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.roadmap-item ul { margin-left: 16px; }
+.roadmap-item li { margin-bottom: 4px; font-size: 13px; }
+.note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+.highlight-box { background: #FFF3CD; border: 1px solid #FF8B00; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; }
+@media (max-width: 800px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">🇬🇧 UK SME Analysis</span>
+  <a href="#tldr">TLDR</a>
+  <a href="#performance">Performance</a>
+  <a href="#funnel">Funnel</a>
+  <a href="#losses">Why We Lose</a>
+  <a href="#territory">Territory</a>
+  <a href="#pipeline">Pipeline</a>
+  <a href="#solutions">Solutions</a>
+</nav>
+
+<div class="page">
+
+<!-- HEADER -->
+<div style="margin-bottom:24px; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+  <div>
+    <h1 style="font-size:24px; font-weight:800; color:var(--blue-dark);">UK SME — Deep Dive Analysis</h1>
+    <p style="color:var(--text-muted); margin-top:4px;">Nordhealth · SME only · Enterprise excluded · HubSpot portal 5923252 · Updated 2026-03-25</p>
+  </div>
+  <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+    <span class="tag nb">Feb 2026 Full Month</span>
+    <span class="tag nb">Mar 2026 MTD (1–24)</span>
+    <span class="tag warn">⚠ CEO Priority — Action Required</span>
+    <a href="https://www.notion.so/32e57ba3e0ba815cad42f285b7552f25" target="_blank" class="hs-link">📄 GTM Command Center ↗</a>
+  </div>
+</div>
+
+<!-- TLDR -->
+<div id="tldr" class="tldr section">
+  <h2>30-Second Read</h2>
+  <p>
+    UK SME NB MRR is <strong>down −73% YoY in Feb 2026</strong> (€610 vs ~€2,260 Feb 2025) and −40% in Jan.
+    Root cause is not demo volume — UK has <strong>16–18 demos scheduled per month</strong> — it is conversion:
+    <strong>14% win rate</strong> in Feb (2 CW vs 12 CL). 50% of losses are "No Decision / Non-Responsive" and 33% "Stayed with Provider."
+    Structural problem: Kirsty Freely covers <strong>UK + International</strong> — territory dilution splits capacity, pipeline is bloated to 103 deals with most stale.
+    March is improving (2 CW, 33% WR, €1,077 MRR) but from a very low base.
+    <strong>Three actions required:</strong> (1) Focus Kirsty on UK only. (2) Build a UK company target list in HubSpot. (3) Fix demo-to-close conversion by tightening qualification at DR stage.
+  </p>
+</div>
+
+<!-- PERFORMANCE OVERVIEW -->
+<div id="performance" class="section">
+  <div class="section-title">📊 Performance Overview <small>Mar MTD · Feb 2026 · YoY</small></div>
+
+  <!-- YoY alert -->
+  <div class="alert red" style="margin-bottom:16px;">
+    <strong>⚠ CEO flagged: UK SME down −40% Jan YoY and −73% Feb YoY.</strong>
+    Feb 2025 UK NB MRR estimated at ~€2,260. Feb 2026 = €610. The collapse accelerated MoM through Q1 2026.
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:12px;">
+    <div class="kpi">
+      <div class="label">NB MRR — Mar MTD</div>
+      <div class="value" style="color:var(--yellow);">€1,077</div>
+      <div class="sub">Kirsty · UK + Intl mixed</div>
+      <div class="delta up">↑ +76% vs Feb (€610)</div>
+    </div>
+    <div class="kpi">
+      <div class="label">NB MRR — Feb 2026</div>
+      <div class="value" style="color:var(--red);">€610</div>
+      <div class="sub">UK territory only</div>
+      <div class="delta down">↓ −73% vs Feb 2025 (~€2,260)</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Win Rate — Feb 2026</div>
+      <div class="value" style="color:var(--red);">14.3%</div>
+      <div class="sub">2 CW · 12 CL · from demo</div>
+      <div class="delta down">↓ Team avg: 28.4%</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Win Rate — Mar MTD</div>
+      <div class="value" style="color:var(--yellow);">33.3%</div>
+      <div class="sub">2 CW · 4 CL · 15 DD</div>
+      <div class="delta up">↑ Recovering from Feb low</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:20px;">
+    <div class="kpi">
+      <div class="label">Total MRR — Feb (incl Upsell)</div>
+      <div class="value">€990</div>
+      <div class="sub">€610 NB + €380 Upsell</div>
+      <div class="delta flat">6 CW deals total (2 NB + 4 upsell)</div>
+    </div>
+    <div class="kpi">
+      <div class="label">ARPA NB — Feb</div>
+      <div class="value">€305</div>
+      <div class="sub">vs €438 team avg</div>
+      <div class="delta down">↓ −30% below team average</div>
+    </div>
+    <div class="kpi">
+      <div class="label">ARPA NB — Mar MTD</div>
+      <div class="value">€539</div>
+      <div class="sub">€1,077 / 2 CW</div>
+      <div class="delta up">↑ Deal quality improving</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Open Pipeline (Kirsty)</div>
+      <div class="value">€102k</div>
+      <div class="sub">103 deals · UK + Intl mixed</div>
+      <div class="delta down">91 earlier-stage (likely stale)</div>
+    </div>
+  </div>
+
+  <!-- Trend table -->
+  <div class="section-title" style="font-size:15px; margin-bottom:12px;">Trend vs Prior Periods</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Period</th><th>NB CW</th><th>NB MRR</th><th>CL NB</th><th>Win Rate</th><th>ARPA</th><th>vs Prior Year</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--blue-light);">
+          <td><strong>Mar 2026 MTD</strong></td><td>2</td><td>€1,077</td><td>4</td><td>33.3%</td><td>€539</td><td>—</td><td><span class="badge info">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Feb 2026</strong></td><td>2</td><td>€610</td><td>12</td><td>14.3%</td><td>€305</td><td class="delta down">−73% YoY</td><td><span class="badge info">Verified</span></td>
+        </tr>
+        <tr>
+          <td><strong>Jan 2026</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="delta down">−40% YoY</td><td><span class="badge warn">CEO stated</span></td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td><strong>Q4 2025 est.</strong></td><td>~8–10</td><td>~€3,000–5,000/mo</td><td>~8–12/mo</td><td>~25–35%</td><td>—</td><td>—</td><td><span class="badge warn">Estimated</span></td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td><strong>Q3 2025 est.</strong></td><td>~8–10</td><td>~€3,000–5,000/mo</td><td>—</td><td>~30–40%</td><td>—</td><td>—</td><td><span class="badge warn">Estimated</span></td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td><strong>Feb 2025 est.</strong></td><td>~5–7</td><td>~€2,260</td><td>—</td><td>~35–45%</td><td>—</td><td>—</td><td><span class="badge warn">Back-calculated from −73%</span></td>
+        </tr>
+        <tr style="background:#f8f9fa;">
+          <td><strong>Q1 2025 est.</strong></td><td>~15–20</td><td>~€6,000–8,000</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="badge warn">Estimated · needs HubSpot query</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-top:8px;">⚠ Estimated rows need verification with a HubSpot historical query by market territory. Priority action: pull UK NB MRR by month for full 2025 + Jan 2026.</p>
+</div>
+
+<!-- FUNNEL -->
+<div id="funnel" class="section">
+  <div class="section-title">🔽 UK Funnel — February 2026 <small>Verified from HubSpot · by-market.csv</small></div>
+
+  <div class="highlight-box">
+    <strong>Core finding:</strong> UK has strong top-of-funnel activity (16 DR, 18 DS) but collapses at close. 85% of deal outcomes in Feb were losses. The problem is not lead generation — it is qualification and conversion.
+  </div>
+
+  <div style="display:flex; align-items:center; gap:0; overflow-x:auto; padding-bottom:8px; margin-bottom:20px;">
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#0052CC; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">17+</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">Leads</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">sample</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">→</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#0065FF; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">~6</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">MQL</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">~35% of leads</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">→</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#2684FF; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">16</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">DR</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">Demo Requested</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">→</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#4C9AFF; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">18</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">DS</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">113% DR→DS ⚠</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">→</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#7AB5FF; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">~8</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">DD</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">~44% DS→DD</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">→</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#00875A; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">2</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">CW NB</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">14% WR ⛔</div>
+    </div>
+    <div style="font-size:18px; color:var(--border); padding:0 4px; align-self:center;">vs</div>
+    <div style="text-align:center; min-width:90px;">
+      <div style="background:#DE350B; color:#fff; border-radius:8px; padding:12px 8px; margin:0 2px;">
+        <div style="font-size:22px; font-weight:800;">12</div>
+        <div style="font-size:11px; opacity:0.85; margin-top:2px;">CL NB</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">85% loss rate</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div style="font-weight:700; margin-bottom:12px;">Conversion vs Team Average</div>
+      <table>
+        <thead><tr><th>Stage</th><th>UK</th><th>Team Avg</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td>DR → DS</td><td>112.5%</td><td>83%</td><td class="delta up">Above avg</td></tr>
+          <tr><td>DS → DD</td><td>~44%</td><td>~57%</td><td class="delta down">−13pp</td></tr>
+          <tr><td>DD → CW (Win Rate)</td><td style="color:var(--red); font-weight:700;">14.3%</td><td>28.4%</td><td class="delta down" style="font-weight:700;">−14pp ⛔</td></tr>
+          <tr><td>DR → CW</td><td>12.5%</td><td>14.9%</td><td class="delta down">−2.4pp</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div style="font-weight:700; margin-bottom:12px;">UK in Context — Feb 2026 All Markets</div>
+      <table>
+        <thead><tr><th>Market</th><th>CW NB</th><th>NB MRR</th><th>Win Rate</th></tr></thead>
+        <tbody>
+          <tr><td>Denmark</td><td>3</td><td>€1,972</td><td style="color:var(--green);">100%</td></tr>
+          <tr><td>S.Europe</td><td>4</td><td>€599</td><td style="color:var(--green);">67%</td></tr>
+          <tr><td>LATAM</td><td>1</td><td>€333</td><td style="color:var(--green);">50%</td></tr>
+          <tr><td>North America</td><td>5</td><td>€2,594</td><td>25%</td></tr>
+          <tr style="background:var(--red-light);">
+            <td><strong>UK</strong></td><td><strong>2</strong></td><td><strong>€610</strong></td><td style="color:var(--red); font-weight:700;">14.3% ← lowest</td>
+          </tr>
+          <tr><td>International</td><td>3</td><td>€680</td><td>17%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- LOSS ANALYSIS -->
+<div id="losses" class="section">
+  <div class="section-title">❌ Why We Lose in UK <small>Feb 2026 · Kirsty Freely · 12 NB CL</small></div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="card">
+      <div style="font-weight:700; margin-bottom:14px;">Loss Reason Breakdown (12 CL)</div>
+
+      <div style="margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <span>No Decision / Non-Responsive</span><span style="font-weight:700; color:var(--red);">6 deals (50%)</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:50%; background:var(--red);"></div></div>
+        <div class="note">Ghosting after demo. Deals progressed too far without qualifying intent.</div>
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <span>Stayed with Current Provider</span><span style="font-weight:700; color:var(--orange);">4 deals (33%)</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:33%; background:var(--orange);"></div></div>
+        <div class="note">High renewal inertia in UK market. Lupa and other incumbent providers sticky.</div>
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <span>Competition</span><span style="font-weight:700; color:var(--yellow);">1 deal (8%)</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:8%; background:var(--yellow);"></div></div>
+        <div class="note">United Alsaqer Group — 17-month cycle, competitor selected. Long-cycle deals at risk.</div>
+      </div>
+
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <span>Cost</span><span style="font-weight:700; color:var(--grey);">1 deal (8%)</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:8%; background:var(--grey);"></div></div>
+        <div class="note">Vetplus Hospital (Palestine) — unable to afford. Non-UK geography in territory.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="margin-bottom:12px;">
+        <div style="font-weight:700; margin-bottom:10px;">Key Loss Patterns</div>
+        <div class="alert yellow" style="margin-bottom:8px;">
+          <strong>50% "No Decision"</strong> = deals that should have been disqualified earlier. These are not close losses — they are qualification failures. Tightening entry criteria at DR stage would eliminate ~6 wasted demos/month.
+        </div>
+        <div class="alert yellow" style="margin-bottom:8px;">
+          <strong>33% "Stayed with Provider"</strong> = switch motivation not established before demo. UK clinics are highly sticky — if they haven't decided to switch before the demo, they almost never will after.
+        </div>
+        <div class="alert red" style="margin-bottom:0;">
+          <strong>University of West Indies:</strong> Lost to AI-first provider. UK prospects with AI requirement are a growing ICP segment — Lupa and others are pitching Clinical AI as a differentiator.
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700; margin-bottom:10px;">Competition in UK</div>
+        <table>
+          <thead><tr><th>Competitor</th><th>Context</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Lupa</strong></td><td>CEO-flagged. UK-native. Strong SME positioning, competitive pricing. Main threat in Kirsty's territory.</td></tr>
+            <tr><td><strong>Unknown (United Alsaqer)</strong></td><td>17-month cycle — likely existing/established provider in the region.</td></tr>
+            <tr><td><strong>AI-first provider</strong></td><td>University of West Indies — AI capabilities as primary buying criterion. Growing segment.</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:8px;">⚠ No Lupa-specific win/loss data in HubSpot. Recommendation: add Lupa to `closed_lost_reason` options and track explicitly going forward.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERRITORY ANALYSIS -->
+<div id="territory" class="section">
+  <div class="section-title">🗺️ Territory Problem — UK vs International Dilution</div>
+
+  <div class="alert red" style="margin-bottom:16px;">
+    <strong>Structural issue:</strong> Kirsty Freely covers "UK + International" as a single territory. International deals (Africa, Middle East, APAC, global) consume demo capacity that should go to UK. This is the single biggest structural fix available.
+  </div>
+
+  <div class="three-col" style="margin-bottom:20px;">
+    <div class="card">
+      <div class="label">OB Calls YTD</div>
+      <div style="font-size:24px; font-weight:800; color:var(--blue-dark); margin:8px 0;">59</div>
+      <div style="font-size:12px; color:var(--text-muted);">PROVISIONAL</div>
+      <div class="divider"></div>
+      <div style="font-size:13px; color:var(--red);">~47 of 59 on <strong>existing customers</strong></div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Confirmed: Mar 2–3 sequence blast on customer accounts. Real NB OB prospecting ≈ 12 calls.</div>
+    </div>
+    <div class="card">
+      <div class="label">Pipeline (Mar 18)</div>
+      <div style="font-size:24px; font-weight:800; color:var(--blue-dark); margin:8px 0;">103 deals</div>
+      <div style="font-size:12px; color:var(--text-muted);">€101,769 NB + Upsell MRR</div>
+      <div class="divider"></div>
+      <div style="font-size:13px;">12 ⭐ Priority · <span style="color:var(--orange);">91 earlier-stage</span></div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">UK vs International split unknown. Earlier-stage likely contains many stale international deals.</div>
+    </div>
+    <div class="card">
+      <div class="label">Demos Done — Feb→Mar</div>
+      <div style="font-size:24px; font-weight:800; color:var(--green); margin:8px 0;">3 → 15</div>
+      <div style="font-size:12px; color:var(--green);">+400% DD MoM</div>
+      <div class="divider"></div>
+      <div style="font-size:13px;">Positive signal: demo volume ramping in March</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">If UK-focused (not international), March could be a genuine inflection point.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-weight:700; margin-bottom:12px;">Territory Split Diagnosis</div>
+    <table>
+      <thead><tr><th>Issue</th><th>Impact</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>UK + International = 1 territory</td>
+          <td>Demo capacity split. International demos don't convert at UK ARPA levels.</td>
+          <td>Dedicate Kirsty to UK only. Route International to another AE or SDR queue.</td>
+        </tr>
+        <tr>
+          <td>OB calls predominantly on existing customers</td>
+          <td>~47/59 calls are upsell outreach, not NB prospecting. NB OB pipeline barely fed.</td>
+          <td>Separate OB call lists: UK NB prospects vs UK customer upsell vs International.</td>
+        </tr>
+        <tr>
+          <td>No UK NB target list in HubSpot</td>
+          <td>Outbound prospecting is unstructured. No systematic ICP-driven company list to work.</td>
+          <td>Build UK company list (Jean's RevOps plan Stage 1: create → enrich → dedupe → score → route).</td>
+        </tr>
+        <tr>
+          <td>Pipeline bloated (103 deals)</td>
+          <td>91 earlier-stage deals create noise. Stale deals crowd out new active opportunities.</td>
+          <td>Immediate hygiene: close all deals with no activity in 60+ days. Target ≤40 active UK deals.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PIPELINE -->
+<div id="pipeline" class="section">
+  <div class="section-title">🔎 Pipeline Deep Dive — Kirsty Freely <small>Mar 18 snapshot · UK + International combined</small></div>
+
+  <div class="two-col">
+    <div class="card">
+      <div style="font-weight:700; margin-bottom:12px;">Pipeline Breakdown</div>
+      <table>
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Total open deals</td><td><strong>103</strong></td></tr>
+          <tr><td>Total MRR (unweighted)</td><td><strong>€101,769</strong></td></tr>
+          <tr><td>NB MRR</td><td>€87,994 (86%)</td></tr>
+          <tr><td>Upsell MRR</td><td>€13,775 (14%)</td></tr>
+          <tr><td>⭐ Priority stages (BI + Commitment)</td><td><strong>12 deals</strong></td></tr>
+          <tr><td>Earlier stages</td><td><strong>91 deals</strong> — likely many stale</td></tr>
+          <tr><td>March 2026 closes</td><td>36 deals in pipeline with Mar close date</td></tr>
+          <tr><td>UK vs International split</td><td><span class="badge warn">Unknown — needs HubSpot query</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div style="font-weight:700; margin-bottom:12px;">Pipeline Quality Assessment</div>
+      <div class="alert red" style="margin-bottom:10px;">
+        <strong>€101k nominal MRR</strong> is misleading. 88% of deals are in earlier stages. If UK historical win rate is ~14–33%, expected close value from this pipeline is <strong>€14k–€34k</strong> at best — not €101k.
+      </div>
+      <div class="alert yellow" style="margin-bottom:10px;">
+        <strong>36 March-close deals:</strong> Most are likely optimistic close dates not updated. With 2 CW in Feb and 2 so far in March, a realistic March close from 36 deals ≈ 3–5 CW.
+      </div>
+      <div class="alert blue">
+        <strong>Action needed:</strong> Run a HubSpot report to split Kirsty's pipeline by market territory (UK vs International). International deals should be re-routed or closed. Estimate: 40–60% of 103 deals are non-UK.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<div id="solutions" class="section">
+  <div class="section-title">🚀 Solutions — What Needs to Happen <small>Aligned to CEO / RevOps plan · prioritised by impact</small></div>
+
+  <div class="alert blue" style="margin-bottom:20px;">
+    These solutions are directly aligned with Alexander Cram's priorities (focus UK team on UK, build target lists) and Jean Mascre's RevOps plan (upsell list → outbound foundation → target list → lead score → route).
+  </div>
+
+  <!-- Solution 1 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">1</div>
+      <div>
+        <div class="ri-title">Separate UK from International — Immediately</div>
+        <div class="ri-owner">Owner: VP Sales · Timeline: This week · Impact: High</div>
+      </div>
+      <span class="badge critical" style="margin-left:auto;">Structural fix</span>
+    </div>
+    <ul>
+      <li>Dedicate Kirsty Freely to <strong>UK-only</strong>. International deals in her pipeline re-routed or re-assigned.</li>
+      <li>Define "UK territory" strictly: GB-based clinics only. International = separate queue (SDR-led or another AE).</li>
+      <li>Immediate effect: all of Kirsty's demo capacity goes to UK prospects, not international one-offs.</li>
+      <li>Run a HubSpot pipeline query: filter Kirsty's 103 deals by company country = GB to isolate the true UK pipeline.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 2 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">2</div>
+      <div>
+        <div class="ri-title">Build UK NB Target List in HubSpot</div>
+        <div class="ri-owner">Owner: RevOps (Jean) · Timeline: April batch · Impact: High</div>
+      </div>
+      <span class="badge warn">RevOps priority</span>
+    </div>
+    <ul>
+      <li>UK has good PMF + remaining TAM but no structured company list (unlike DACH which has a €10k+ MRR list).</li>
+      <li>Stage 1 (April): create missing UK vet clinic companies in HubSpot → enrich (Clay) → dedupe → basic lead score (fit + signal) → route to Kirsty.</li>
+      <li>Prioritise: independent practices, 2–10 vet clinics, currently on Lupa or legacy software.</li>
+      <li>Monthly volume target to be defined: suggest minimum 30 new UK companies/month for Kirsty to work.</li>
+      <li>Stage 2 (Q3): full UK TAM + advanced scoring per Jean's RevOps roadmap.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 3 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">3</div>
+      <div>
+        <div class="ri-title">Fix Qualification at Demo Request Stage</div>
+        <div class="ri-owner">Owner: Kirsty Freely + VP Sales · Timeline: Immediate · Impact: Medium-High</div>
+      </div>
+      <span class="badge warn">Conversion fix</span>
+    </div>
+    <ul>
+      <li>50% of UK losses are "No Decision" = demos given to clinics that were never going to buy.</li>
+      <li>33% "Stayed with Provider" = demos given to clinics still contracted to their current system.</li>
+      <li>Implement a 3-question qualification gate before scheduling UK demos: (1) What is their current software? (2) Have they decided to switch? (3) What is their go-live date?</li>
+      <li>Any clinic that can't answer (2) and (3) should be put into a nurture sequence, not a demo.</li>
+      <li>Expected outcome: reduce UK CL from 12/month to 5–7/month, improving win rate to 30%+.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 4 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">4</div>
+      <div>
+        <div class="ri-title">UK Upsell — Customer List by 27 March</div>
+        <div class="ri-owner">Owner: RevOps (Jean) · Timeline: 27/03 · Impact: Medium</div>
+      </div>
+      <span class="badge ok">In progress</span>
+    </div>
+    <ul>
+      <li>UK is an existing Provet stronghold. Many UK customers have not adopted ProvetPay or Clinical AI.</li>
+      <li>Deliver clean UK customer list in HubSpot with ProvetPay / Clinical AI status + clinic type by 27/03 (Jean's commitment).</li>
+      <li>Route UK upsell opportunities to Kirsty with clear signal: who is eligible for ProvetPay, who has Clinical AI but not using it.</li>
+      <li>UK upsell could deliver €500–1,500/month incremental MRR with 2–3 converted accounts.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 5 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">5</div>
+      <div>
+        <div class="ri-title">Pipeline Hygiene — Clean Kirsty's 103 Deals</div>
+        <div class="ri-owner">Owner: Kirsty Freely + RevOps · Timeline: By 31 March · Impact: Medium</div>
+      </div>
+      <span class="badge warn">Hygiene</span>
+    </div>
+    <ul>
+      <li>103 open deals is unmanageable. 91 are in earlier stages — most are likely stale or international.</li>
+      <li>Close all deals with no HubSpot activity in the last 60 days (auto-close rule or Kirsty review).</li>
+      <li>Move all non-UK deals out of Kirsty's pipeline (re-assign or close).</li>
+      <li>Target: ≤40 active UK deals after clean-up, all with activity logged in last 30 days.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 6 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">6</div>
+      <div>
+        <div class="ri-title">Lupa Battle Card + Competitive Response</div>
+        <div class="ri-owner">Owner: Product Marketing + VP Sales · Timeline: April · Impact: Medium</div>
+      </div>
+      <span class="badge warn">Competitive</span>
+    </div>
+    <ul>
+      <li>CEO specifically called out Lupa as the main UK SME competitor. Currently no Lupa-specific win/loss data in HubSpot.</li>
+      <li>Immediate: add "Lupa" as a specific option in <code>closed_lost_reason</code> to start tracking explicitly.</li>
+      <li>April: create a Lupa battle card — pricing, feature differences, switching cost arguments, reference customers who switched from Lupa.</li>
+      <li>UK clinics most common Lupa objection: price, UK-native support, ease of migration. Address directly in demo flow.</li>
+    </ul>
+  </div>
+
+  <!-- Solution 7 -->
+  <div class="roadmap-item">
+    <div class="ri-header">
+      <div class="ri-number">7</div>
+      <div>
+        <div class="ri-title">Marketing — UK as Front-of-Mind Market</div>
+        <div class="ri-owner">Owner: Marketing + CEO · Timeline: Q2 · Impact: Medium</div>
+      </div>
+      <span class="badge info">Strategic</span>
+    </div>
+    <ul>
+      <li>CEO explicitly stated: UK at minimum on par with US, possibly clear #1 for marketing activities.</li>
+      <li>UK inbound leads (17+ in Feb sample) are currently not converting — marketing quality and targeting need review.</li>
+      <li>UK-specific: BVNA (British Veterinary Nursing Association) congress, BSAVA congress — presence and sponsorship.</li>
+      <li>Content: UK case studies, UK-specific testimonials, NHS/RCVS alignment messaging.</li>
+      <li>UK lead quality appears lower than Nordic markets (MQL→DD conversion is weak). Better-targeted inbound would reduce the "No Decision" CL problem upstream.</li>
+    </ul>
+  </div>
+
+  <!-- Priority matrix -->
+  <div class="card" style="margin-top:20px;">
+    <div style="font-weight:700; margin-bottom:12px;">Priority Matrix — Impact vs Effort</div>
+    <table>
+      <thead><tr><th>#</th><th>Action</th><th>Owner</th><th>Timeline</th><th>Impact</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr style="background:var(--red-light);">
+          <td>1</td><td><strong>Separate UK from International territory</strong></td><td>VP Sales</td><td>This week</td><td><span class="badge critical">High</span></td><td><span class="badge ok">Low</span></td>
+        </tr>
+        <tr style="background:var(--red-light);">
+          <td>3</td><td><strong>Qualification gate before UK demos</strong></td><td>Kirsty + VP Sales</td><td>Immediate</td><td><span class="badge critical">High</span></td><td><span class="badge ok">Low</span></td>
+        </tr>
+        <tr style="background:var(--yellow-light);">
+          <td>4</td><td>UK upsell customer list delivery</td><td>RevOps</td><td>27 March</td><td><span class="badge warn">Medium</span></td><td><span class="badge warn">Medium</span></td>
+        </tr>
+        <tr style="background:var(--yellow-light);">
+          <td>5</td><td>Pipeline hygiene (103 → ≤40 active UK deals)</td><td>Kirsty + RevOps</td><td>31 March</td><td><span class="badge warn">Medium</span></td><td><span class="badge ok">Low</span></td>
+        </tr>
+        <tr>
+          <td>2</td><td>Build UK NB target list in HubSpot</td><td>RevOps</td><td>April batch</td><td><span class="badge critical">High</span></td><td><span class="badge critical">High</span></td>
+        </tr>
+        <tr>
+          <td>6</td><td>Lupa battle card + track Lupa losses</td><td>Product Marketing</td><td>April</td><td><span class="badge warn">Medium</span></td><td><span class="badge warn">Medium</span></td>
+        </tr>
+        <tr>
+          <td>7</td><td>UK marketing front-of-mind</td><td>Marketing + CEO</td><td>Q2</td><td><span class="badge warn">Medium</span></td><td><span class="badge critical">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DATA GAPS -->
+<div class="section">
+  <div class="section-title">⚠️ Data Gaps — What We Need from HubSpot</div>
+  <div class="card">
+    <p style="margin-bottom:12px; color:var(--text-muted); font-size:13px;">The following data is not currently in local files and requires a HubSpot query to be complete:</p>
+    <table>
+      <thead><tr><th>#</th><th>Missing Data</th><th>Why It Matters</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>UK NB MRR by month — full 2025 + Jan 2026</td><td>Confirm the exact YoY trend and when the decline started</td><td><span class="badge critical">High</span></td></tr>
+        <tr><td>2</td><td>Kirsty's pipeline: UK vs International company split</td><td>Understand true UK pipeline value vs international noise</td><td><span class="badge critical">High</span></td></tr>
+        <tr><td>3</td><td>Number of UK companies in HubSpot (prospect + customer)</td><td>Size the UK target market vs what's already in CRM</td><td><span class="badge warn">Medium</span></td></tr>
+        <tr><td>4</td><td>Lupa as a specific lost reason — historical count</td><td>Understand Lupa win rate to prioritise battle card urgency</td><td><span class="badge warn">Medium</span></td></tr>
+        <tr><td>5</td><td>UK customer upsell opportunity (ProvetPay / Clinical AI status)</td><td>Quantify upsell TAM for UK before 27/03 delivery</td><td><span class="badge warn">Medium</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
